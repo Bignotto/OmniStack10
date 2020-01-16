@@ -8,7 +8,8 @@ const app = express();
 //database connect
 mongoose.connect('mongodb+srv://damaris:wallgreens@cluster0-ue8ci.mongodb.net/devradar?retryWrites=true&w=majority',{
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    useCreateIndex: true
 })
 /*
 query params: parâmetros na url

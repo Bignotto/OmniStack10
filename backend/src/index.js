@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const routes = require('./routes');
+const cors = require('cors');
 
 //creat application
 const app = express();
@@ -25,7 +26,7 @@ body params: json enviado por formulários
 - bastante informação
 req.body
 */
-
+app.use(cors());
 app.use(express.json());
 app.use(routes);
 

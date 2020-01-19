@@ -1,10 +1,16 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const http = require('http');
 const routes = require('./routes');
 const cors = require('cors');
 
+const { setupWebSocket } = require('./websocket');
+
 //creat application
 const app = express();
+const server = http.Server(app);
+
+setupWebSocket(server);
 
 //database connect
 mongoose.connect('mongodb+srv://damaris:wallgreens@cluster0-ue8ci.mongodb.net/devradar?retryWrites=true&w=majority',{
@@ -30,6 +36,6 @@ app.use(cors());
 app.use(express.json());
 app.use(routes);
 
-app.listen(3333, () => {
+server.listen(3333, () => {
     console.log('> Server runnin on port 3333');
 })
